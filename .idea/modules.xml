@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gestion-hotel.iml" filepath="$PROJECT_DIR$/gestion-hotel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotel-api/hotel-api.iml" filepath="$PROJECT_DIR$/hotel-api/hotel-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotel-core/hotel-core.iml" filepath="$PROJECT_DIR$/hotel-core/hotel-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/restaurant-api/restaurant-api.iml" filepath="$PROJECT_DIR$/restaurant-api/restaurant-api.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hotel-api" />
+        <module name="hotel-core" />
+        <module name="restaurant-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gestion-hotel" target="1.5" />
+      <module name="hotel-api" target="19" />
+      <module name="hotel-core" target="19" />
+      <module name="restaurant-api" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hotel-api" options="-parameters" />
+      <module name="hotel-core" options="-parameters" />
+      <module name="restaurant-api" options="-parameters" />
+    </option>
+  </component>
+</project>
