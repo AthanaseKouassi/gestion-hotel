@@ -34,7 +34,9 @@ https://www.baeldung.com/spring-boot-openapi-api-first-development
 
 https://reflectoring.io/spring-boot-openapi/
 
+https://blog.octo.com/designer-une-api-rest/
 
+https://opensource.zalando.com/restful-api-guidelines/#introduction
 ```
 
 
