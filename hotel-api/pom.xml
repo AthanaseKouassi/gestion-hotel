@@ -81,6 +81,11 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.7.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.11.0</version>
+		</dependency>
 
 	</dependencies>
 
@@ -107,15 +112,54 @@
 						<goals>
 							<goal>generate</goal>
 						</goals>
+
+
 						<configuration>
-							<skipValidateSpec>true</skipValidateSpec>
-							<inputSpec>${project.basedir}/src/main/resources/openapi/client.yaml</inputSpec>
+							<!-- Spring generator config -->
 							<generatorName>spring</generatorName>
+							<library>spring-boot</library>
+							<!-- Reference to the Petstore spec -->
+							<inputSpec>${project.basedir}/src/main/resources/openapi/client.yaml</inputSpec>
+							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+							<!-- Enable API generation -->
+							<generateApis>true</generateApis>
+							<!-- Enable API documentation generation -->
+							<generateApiDocumentation>true</generateApiDocumentation>
+							<!-- Do not generate tests -->
+							<generateApiTests>false</generateApiTests>
+							<!-- Generate models -->
+							<generateModels>true</generateModels>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateModelTests>false</generateModelTests>
+							<generateSupportingFiles>true</generateSupportingFiles>
+							<!-- Generation output will be in target/generated-sources -->
+							<output>${project.build.directory}/generated-sources</output>
+							<!-- Model java package name -->
+							<modelPackage>com.formdesk.hotelapi.model</modelPackage>
+							<!-- API java package name -->
+							<apiPackage>com.formdesk.hotelapi.api</apiPackage>
 							<configOptions>
-								<openApiNullable>false</openApiNullable>
+								<sourceFolder>main/java</sourceFolder>
+								<!-- Use modern java8 date/time api -->
+								<dateLibrary>java8</dateLibrary>
+								<java8>true</java8>
+								<oas3>true</oas3>
+<!--								<useSpringController>true</useSpringController>-->
+								<useSpringfox>false</useSpringfox>
+								<!-- Enable bean validation using javax validation and hibernate validator  -->
+<!--								<useBeanValidation>true</useBeanValidation>-->
+<!--								<performBeanValidation>true</performBeanValidation>-->
 								<interfaceOnly>true</interfaceOnly>
+								<!-- Use delegate pattern to separate implementation from API definition  -->
+								<delegatePattern>true</delegatePattern>
+								<useOptional>false</useOptional>
+								<!-- Place required parameters first in models  -->
+								<sortModelPropertiesByRequiredFlag>true</sortModelPropertiesByRequiredFlag>
+								<sortParamsByRequiredFlag>true</sortParamsByRequiredFlag>
 							</configOptions>
 						</configuration>
+
+
 					</execution>
 				</executions>
 			</plugin>
