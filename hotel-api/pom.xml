@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.formdesk</groupId>
 		<artifactId>gestion-hotel</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 
 	<artifactId>hotel-api</artifactId>
@@ -13,13 +13,13 @@
 	<name>hotel-api</name>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.formdesk</groupId>
 			<artifactId>hotel-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,6 +49,44 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.15</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.11.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -65,7 +103,71 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<version>6.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+
+
+						<configuration>
+							<!-- Spring generator config -->
+							<generatorName>spring</generatorName>
+							<library>spring-boot</library>
+							<!-- Reference to the Petstore spec -->
+							<inputSpec>${project.basedir}/src/main/resources/openapi/client.yaml</inputSpec>
+							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+							<!-- Enable API generation -->
+							<generateApis>true</generateApis>
+							<!-- Enable API documentation generation -->
+							<generateApiDocumentation>true</generateApiDocumentation>
+							<!-- Do not generate tests -->
+							<generateApiTests>false</generateApiTests>
+							<!-- Generate models -->
+							<generateModels>true</generateModels>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateModelTests>false</generateModelTests>
+							<generateSupportingFiles>true</generateSupportingFiles>
+							<!-- Generation output will be in target/generated-sources -->
+							<output>${project.build.directory}/generated-sources</output>
+							<!-- Model java package name -->
+							<modelPackage>com.formdesk.hotelapi.model</modelPackage>
+							<!-- API java package name -->
+							<apiPackage>com.formdesk.hotelapi.api</apiPackage>
+							<configOptions>
+								<sourceFolder>main/java</sourceFolder>
+								<!-- Use modern java8 date/time api -->
+								<dateLibrary>java8</dateLibrary>
+								<java8>true</java8>
+								<oas3>true</oas3>
+<!--								<useSpringController>true</useSpringController>-->
+								<useSpringfox>false</useSpringfox>
+								<!-- Enable bean validation using javax validation and hibernate validator  -->
+<!--								<useBeanValidation>true</useBeanValidation>-->
+<!--								<performBeanValidation>true</performBeanValidation>-->
+								<interfaceOnly>true</interfaceOnly>
+								<!-- Use delegate pattern to separate implementation from API definition  -->
+								<delegatePattern>true</delegatePattern>
+								<useOptional>false</useOptional>
+								<!-- Place required parameters first in models  -->
+								<sortModelPropertiesByRequiredFlag>true</sortModelPropertiesByRequiredFlag>
+								<sortParamsByRequiredFlag>true</sortParamsByRequiredFlag>
+							</configOptions>
+						</configuration>
+
+
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
+
+
+
 
 </project>

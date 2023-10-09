@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.formdesk</groupId>
 		<artifactId>gestion-hotel</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 
 	<artifactId>restaurant-api</artifactId>
@@ -13,7 +13,7 @@
 	<name>restaurant-api</name>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 
 

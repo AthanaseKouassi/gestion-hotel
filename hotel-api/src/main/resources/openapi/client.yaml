@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  version: 1.0
+  title: Swagger gestion hôtel application - OpenAPI 3.0
+  description: |-
+    L'application auberge est une application de gestion d'ensemble hotelier.
+    Gestion de tous les services (les chambres - le restaurant - le bar - la piscine - gestion des stock ...) d'un hôtel 
+    
+    _Test & formation_
+servers:
+  - url: http://localhost:8080/api/v3
+tags:
+  - name: clients
+    description: tous les service liés aux clients
+    externalDocs:
+      description: En savoir plus
+      url: http://swagger.io
+  
+paths:
+  /clients:
+    post:
+      tags:
+        - clients
+      summary: créer un client
+      description: Création un client
+      operationId: createClient
+      requestBody:
+        description: créer un nouveau client
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clients'
+        required: true
+      responses:
+        '201':
+          description: Client enregistré avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'           
+        '409':
+          description: Conflict le client existe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientConflictError'  
+components:
+  schemas:
+    Clients:
+      type: object
+      properties:
+        id:
+          type: number
+        firstName:
+          type: string
+        lastName: 
+          type: string
+        addresse:
+          type: string
+        phone:
+          type: string
+        mail:
+          type: string
+    ClientConflictError:
+      type: object
+      properties:
+        message:
+          type: string     
