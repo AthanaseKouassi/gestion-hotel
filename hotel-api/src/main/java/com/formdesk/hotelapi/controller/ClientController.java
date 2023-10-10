@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ClientController implements ClientsApi {
 
-        private final CostumerService costumerService;
-        private final ClientRepMapper clientRepMapper;
+    private final CostumerService costumerService;
+    private final ClientRepMapper clientRepMapper;
+
     @Override
     public ResponseEntity<Clients> createClient(Clients clients) {
         log.atInfo().log("Le client :: {}",clients);
         CostumerDto costmerDto = clientRepMapper.clientsToCostumerDto(clients);
         costumerService.createCostumer(costmerDto);
-      //  log.atInfo().log("Create costumer  Nom : {} , Prenom: {}",costumer.lastName() ,costumer.firstName() );
 
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
