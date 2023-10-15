@@ -14,6 +14,9 @@
 - Postgresql 15
 
 - Docker (Docker-compose)
+ * https://www.baeldung.com/docker-layers-spring-boot
+ * https://jskim1991.medium.com/spring-boot-3-ways-of-dockerizing-spring-boot-application-29a905dd5a5a
+ * https://springframework.guru/why-you-should-be-using-spring-boot-docker-layers/
 
 - Kubernetes (minikube)
 
