@@ -57,16 +57,16 @@ public class ClientControllerTest {
 
 
         // Convertir l'objet en JSON
-        String clientsJson = objectMapper.writeValueAsString(clients);
+        // Possibilité de mettre final le type car la variable n'est plus modifié
+        final String clientsJson = objectMapper.writeValueAsString(clients);
 
         when(clientRepMapper.clientsToCostumerDto(clients)).thenReturn(costumerDto);
 
         // Effectuez la demande POST vers /api/clients
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.post("/api/clients")
+        final ResultActions response = mockMvc.perform(MockMvcRequestBuilders.post("/api/clients")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(clientsJson))
                 .andDo(print());
-             //   .andExpect(MockMvcResultMatchers.status().isOk());
         response.andExpect(jsonPath("$").isMap());
         response.andExpect(jsonPath("$.firstName").value(costumerDto.firstName()));
         response.andExpect(jsonPath("$.lastName").value(costumerDto.lastName()));
